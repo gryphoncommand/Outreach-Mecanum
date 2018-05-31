@@ -45,3 +45,6 @@ class DriveTrain(Subsystem):
 
     def initDefaultCommand(self):
         self.setDefaultCommand(FollowJoystick())
+
+    def set(self, ySpeed, xSpeed, zRotation, gyroAngle):
+        self.drive.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle)

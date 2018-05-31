@@ -6,6 +6,9 @@ from commandbased import CommandBasedRobot
 
 import oi
 import subsystems
+
+from commands.driveforward import DriveForward
+
 #from commands.autonomous import AutonomousProgram
 
 
@@ -24,7 +27,7 @@ class ExampleBot(CommandBasedRobot):
         you will need to access later.
         '''
 
-        Command.getRobot = lambda x=0: self
+      #  Command.getRobot = lambda x=0: self
       #  self.motor = singlemotor.SingleMotor()
         subsystems.init()
 
@@ -44,8 +47,8 @@ class ExampleBot(CommandBasedRobot):
         example. You can also use a SendableChooser to have the autonomous
         program chosen from the SmartDashboard.
         '''
-
-      #  self.autonomousProgram.start()
+        self.autonomousProgram = DriveForward()
+        self.autonomousProgram.start()
 
 
 
