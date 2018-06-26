@@ -19,10 +19,10 @@ class DriveTrain(Subsystem):
         super().__init__('SingleMotor')
 
 
-        self.frontLeftMotor = wpilib.Talon(channels.frontLeftChannel)
-        self.rearLeftMotor = wpilib.Talon(channels.rearLeftChannel)
-        self.frontRightMotor = wpilib.Talon(channels.frontRightChannel)
-        self.rearRightMotor = wpilib.Talon(channels.rearRightChannel)
+        self.frontLeftMotor = ctre.WPI_TalonSRX(channels.frontLeftChannel)
+        self.rearLeftMotor = ctre.WPI_TalonSRX(channels.rearLeftChannel)
+        self.frontRightMotor = ctre.WPI_TalonSRX(channels.frontRightChannel)
+        self.rearRightMotor = ctre.WPI_TalonSRX(channels.rearRightChannel)
 
         self.frontLeftMotor.setInverted(True)
 
