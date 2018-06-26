@@ -54,4 +54,5 @@ class ExampleBot(CommandBasedRobot):
 
 
 if __name__ == '__main__':
-    wpilib.run(ExampleBot)
+    wpilib.run(ExampleBot, physics_enabled=True)
+
