@@ -1,4 +1,5 @@
 import wpilib
+import ctre
 from wpilib.command.subsystem import Subsystem
 from robotmap import channels
 
@@ -27,7 +28,7 @@ class DriveTrain(Subsystem):
         self.frontLeftMotor.setInverted(True)
 
         # you may need to change or remove this to match your robot
-        self.rearLeftMotor.setInverted(True)
+        self.rearLeftMotor.setInverted(False)
 
         self.drive = MecanumDrive(self.frontLeftMotor,
                                          self.rearLeftMotor,
