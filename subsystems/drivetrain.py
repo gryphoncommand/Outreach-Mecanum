@@ -25,7 +25,7 @@ class DriveTrain(Subsystem):
         self.frontRightMotor = ctre.WPI_TalonSRX(channels.frontRightChannel)
         self.rearRightMotor = ctre.WPI_TalonSRX(channels.rearRightChannel)
 
-        self.frontLeftMotor.setInverted(True)
+        self.frontLeftMotor.setInverted(False)
 
         # you may need to change or remove this to match your robot
         self.rearLeftMotor.setInverted(False)

@@ -26,10 +26,10 @@ class MyRobot(wpilib.SampleRobot):
         self.rearRightMotor = ctre.WPI_TalonSRX(self.rearRightChannel)
 
         # invert the left side motors
-        self.frontLeftMotor.setInverted(True)
+        self.frontLeftMotor.setInverted(False)
 
         # you may need to change or remove this to match your robot
-        self.rearLeftMotor.setInverted(True)
+        self.rearLeftMotor.setInverted(False)
 
         self.drive = MecanumDrive(self.frontLeftMotor,
                                          self.rearLeftMotor,
