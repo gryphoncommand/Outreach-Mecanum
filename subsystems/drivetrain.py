@@ -1,5 +1,5 @@
 import wpilib
-import ctre
+from ctre import WPI_TalonSRX
 from wpilib.command.subsystem import Subsystem
 from robotmap import channels
 
@@ -20,12 +20,14 @@ class DriveTrain(Subsystem):
         super().__init__('SingleMotor')
 
 
-        self.frontLeftMotor = ctre.WPI_TalonSRX(channels.frontLeftChannel)
-        self.rearLeftMotor = ctre.WPI_TalonSRX(channels.rearLeftChannel)
-        self.frontRightMotor = ctre.WPI_TalonSRX(channels.frontRightChannel)
-        self.rearRightMotor = ctre.WPI_TalonSRX(channels.rearRightChannel)
+        self.frontLeftMotor = WPI_TalonSRX(channels.frontLeftChannel)
+        self.rearLeftMotor = WPI_TalonSRX(channels.rearLeftChannel)
+        self.frontRightMotor = WPI_TalonSRX(channels.frontRightChannel)
+        self.rearRightMotor = WPI_TalonSRX(channels.rearRightChannel)
 
         self.frontLeftMotor.setInverted(False)
+
+        # self.rearLeftMotor.configSelectedFeedbackSensor(WPI_TalonSRX.FeedbackDevice.CTRE_MagEncoder_Relative, 0, 30)
 
         # you may need to change or remove this to match your robot
         self.rearLeftMotor.setInverted(False)
@@ -33,7 +35,7 @@ class DriveTrain(Subsystem):
         self.drive = MecanumDrive(self.frontLeftMotor,
                                          self.rearLeftMotor,
                                          self.frontRightMotor,
-                                         self.rearRightMotor);
+                                         self.rearRightMotor)
 
         self.drive.setExpiration(0.1)
 
