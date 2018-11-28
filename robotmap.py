@@ -22,3 +22,8 @@ channels.frontLeftChannel = 1
 channels.rearLeftChannel = 3
 channels.frontRightChannel = 2
 channels.rearRightChannel = 4
+
+sensors = InfoPasser()
+
+#analog port 0
+sensors.distance = 0

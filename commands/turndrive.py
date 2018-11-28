@@ -9,14 +9,14 @@ def inputNoise(input):
         input = 0
     return input
 
-class FollowJoystick(Command):
+class TurnDrive(Command):
     '''
     This command will read the joystick's y axis and use that value to control
     the speed of the SingleMotor subsystem.
     '''
 
     def __init__(self):
-        super().__init__('Follow Joystick')
+        super().__init__('Turn Drive')
         self.requires(subsystems.drivetrain)
 
     def execute(self):
@@ -28,12 +28,10 @@ class FollowJoystick(Command):
         #     'Y:' + str(inputNoise(oi.joystick.getY())),
         #     'Z:' + str(inputNoise(oi.joystick.getZ())))
       #  self.getRobot().motor.setSpeed(self.getRobot().joystick.getY())
-        subsystems.drivetrain.driveCartesian(
-                        inputNoise(oi.joystick.getX()),
-                        inputNoise(oi.joystick.getY()),
-                        inputNoise(oi.joystick.getZ()), 0)
-        
-        subsystems.dump_info()
-
+      
+    subsystems.drivetrain.driveCartesian(
+        inputNoise(oi.joystick.getX()),
+        inputNoise(oi.joystick.getY()),
+        inputNoise(oi.joystick.getZ()), 0)
       # 0 is for the gyro
 
