@@ -30,4 +30,4 @@ def init():
 def dump_info():
     smartdashboard.putNumber("Distance Sensor", sensors.get_distance())
 
-    wpilib.LiveWindow.run()
+    #wpilib.LiveWindow.run()
