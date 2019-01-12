@@ -27,8 +27,8 @@ class DriveTrain(Subsystem):
         self.frontRightMotor = WPI_TalonSRX(channels.frontRightChannel)
         self.rearRightMotor = WPI_TalonSRX(channels.rearRightChannel)
         
-        self.crossbow = wpilib.Solenoid(0)
-        self.crossbow.set(False)
+        self.crossbow = wpilib.DoubleSolenoid(0, 1)
+        self.crossbow.set(wpilib.DoubleSolenoid.Value.kOff)
         self.frontLeftMotor.setInverted(False)
 
         # self.rearLeftMotor.configSelectedFeedbackSensor(WPI_TalonSRX.FeedbackDevice.CTRE_MagEncoder_Relative, 0, 30)
@@ -54,7 +54,10 @@ class DriveTrain(Subsystem):
         self.setDefaultCommand(FollowJoystick())
 
     def set_crossbow(self, setting):
-        self.crossbow.set(setting)
+        if setting:
+            self.crossbow.set(wpilib.DoubleSolenoid.Value.kForward)
+        else:
+            self.crossbow.set(wpilib.DoubleSolenoid.Value.kReverse)
 
     def set(self, ySpeed, xSpeed, zRotation, gyroAngle):
         self.drive.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle)

@@ -30,6 +30,7 @@ class ExampleBot(CommandBasedRobot):
       #  Command.getRobot = lambda x=0: self
       #  self.motor = singlemotor.SingleMotor()
         subsystems.init()
+        self.compressor = wpilib.Compressor(0)
 
       #  self.autonomousProgram = AutonomousProgram()
 
@@ -47,8 +48,12 @@ class ExampleBot(CommandBasedRobot):
         example. You can also use a SendableChooser to have the autonomous
         program chosen from the SmartDashboard.
         '''
+        self.compressor.start()
         self.autonomousProgram = DriveForward()
         self.autonomousProgram.start()
+    
+    def teleopInit(self):
+        self.compressor.start()        
 
 
 
