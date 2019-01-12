@@ -54,10 +54,7 @@ class DriveTrain(Subsystem):
         self.setDefaultCommand(FollowJoystick())
 
     def set_crossbow(self, setting):
-        if setting:
-            self.crossbow.set(wpilib.DoubleSolenoid.Value.kForward)
-        else:
-            self.crossbow.set(wpilib.DoubleSolenoid.Value.kReverse)
+        self.crossbow.set(setting)
 
     def set(self, ySpeed, xSpeed, zRotation, gyroAngle):
         self.drive.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle)

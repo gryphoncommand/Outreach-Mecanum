@@ -10,10 +10,9 @@ def init():
     joystick = Joystick(0)
 
     crossbow_open = JoystickButton(joystick, 1)
-    crossbow_close = JoystickButton(joystick, 2)
 
-    crossbow_open.whenPressed(CrossBow(True))
-    crossbow_close.whenPressed(CrossBow(False))
+    
+    crossbow_open.whenPressed(CrossBow())
 
 
 
