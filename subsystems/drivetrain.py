@@ -7,6 +7,8 @@ from wpilib.drive import MecanumDrive
 from commands.followjoystick import FollowJoystick
 
 
+
+
 #from commands.followjoystick import FollowJoystick
 
 class DriveTrain(Subsystem):
@@ -24,7 +26,9 @@ class DriveTrain(Subsystem):
         self.rearLeftMotor = WPI_TalonSRX(channels.rearLeftChannel)
         self.frontRightMotor = WPI_TalonSRX(channels.frontRightChannel)
         self.rearRightMotor = WPI_TalonSRX(channels.rearRightChannel)
-
+        
+        self.crossbow = wpilib.Solenoid(0)
+        self.crossbow.set(False)
         self.frontLeftMotor.setInverted(False)
 
         # self.rearLeftMotor.configSelectedFeedbackSensor(WPI_TalonSRX.FeedbackDevice.CTRE_MagEncoder_Relative, 0, 30)
@@ -48,6 +52,9 @@ class DriveTrain(Subsystem):
 
     def initDefaultCommand(self):
         self.setDefaultCommand(FollowJoystick())
+
+    def set_crossbow(self, setting):
+        self.crossbow.set(setting)
 
     def set(self, ySpeed, xSpeed, zRotation, gyroAngle):
         self.drive.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle)
