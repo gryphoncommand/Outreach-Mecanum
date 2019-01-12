@@ -5,7 +5,7 @@ import math
 import wpilib
 
 def inputNoise(input): 
-    if(abs(input) < 0.02):
+    if(abs(input) < 0.03):
         input = 0
     return input
 
@@ -29,8 +29,8 @@ class FollowJoystick(Command):
         #     'Z:' + str(inputNoise(oi.joystick.getZ())))
       #  self.getRobot().motor.setSpeed(self.getRobot().joystick.getY())
         subsystems.drivetrain.driveCartesian(
-                        inputNoise(oi.joystick.getX()),
                         inputNoise(oi.joystick.getY()),
+                        inputNoise(oi.joystick.getX()),
                         inputNoise(oi.joystick.getZ()), 0)
         
         subsystems.dump_info()

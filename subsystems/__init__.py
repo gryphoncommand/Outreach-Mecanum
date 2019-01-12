@@ -6,6 +6,7 @@ from .sensors import Sensors
 
 from networktables import NetworkTables
 
+import oi
 import robotmap
 
 drivetrain = None
@@ -26,8 +27,18 @@ def init():
     sensors = Sensors()
     smartdashboard = NetworkTables.getTable('SmartDashboard')
 
+def inputNoise(input): 
+    if(abs(input) < 0.02):
+        input = 0
+    return input
 
 def dump_info():
     smartdashboard.putNumber("Distance Sensor", sensors.get_distance())
+    smartdashboard.putNumber("Joystick-X", oi.joystick.getX())
+    smartdashboard.putNumber("Joystick-Y", oi.joystick.getY())
+    smartdashboard.putNumber("Joystick-Z", oi.joystick.getZ())
 
+    smartdashboard.putNumber("Trunc-Joystick-X", inputNoise(oi.joystick.getX()))
+    smartdashboard.putNumber("Trunc-Joystick-Y", inputNoise(oi.joystick.getY()))
+    smartdashboard.putNumber("Trunc-Joystick-Z", inputNoise(oi.joystick.getZ()))
     #wpilib.LiveWindow.run()
