@@ -18,10 +18,10 @@ buttons.R_BUMPER = 6
 
 channels = InfoPasser()
 
-channels.frontLeftChannel = 1
+channels.frontLeftChannel = 4
 channels.rearLeftChannel = 3
-channels.frontRightChannel = 2
-channels.rearRightChannel = 4
+channels.frontRightChannel = 1
+channels.rearRightChannel = 2
 
 sensors = InfoPasser()
 
